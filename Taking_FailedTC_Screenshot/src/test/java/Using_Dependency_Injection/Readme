@@ -1,0 +1,12 @@
+While storing the screenshots for failed testcases, over here we are using Dependency Injection method.
+So, In this particular approach we write a @After Method code in BaseTest class file as shown below
+==>
+	@AfterMethod
+	public void screenshotCapture(ITestResult result) {
+		if (result.getStatus() == ITestResult.FAILURE) {
+			captureScreenshot(result.getTestContext().getName() + "_" + result.getMethod().getMethodName() + ".jpg");
+		}
+	}
+	
+	and in the testNG.xml file we dont specify listeners tag i.e, <listeners></listeners>
+ 
